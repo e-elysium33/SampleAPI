@@ -8,7 +8,7 @@ namespace SampleAPI.Controllers
     [ApiController]
     public class SampleAPIController : ControllerBase
     {
-        [HttpGet("GetDetails")]
+        [HttpGet("Details")]
         public IActionResult GetDetails()
         {
             var details = new[]
