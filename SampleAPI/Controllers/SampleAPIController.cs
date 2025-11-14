@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Security.AccessControl;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -41,6 +42,25 @@ namespace SampleAPI.Controllers
         public void Delete(int id)
         {
 
+        }
+
+        [HttpGet("GenerateOTP/{len?}")]
+        public IActionResult GenerateOTP(int len = 4)
+        {
+            string otp = OTP(len);
+            return Ok(otp);
+        }
+
+        private static string OTP(int len)
+        {
+            string otp = "";
+
+            for (int i = 0; i < len; i++)
+            {
+                otp += new Random().Next(0, 9).ToString();
+            }
+
+            return otp;
         }
     }
 }
